@@ -6,7 +6,7 @@ import { Title } from "@/components/utils/titleStyle";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-/* export async function getStaticPaths() {
+export async function getStaticPaths() {
   let ids = [];
 
   for (let i = 0; i < 252; i++) {
@@ -24,9 +24,9 @@ import { useRouter } from "next/router";
     paths,
     fallback: true,
   };
-} */
+}
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const { pokemonId } = context.params;
 
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
@@ -40,11 +40,14 @@ export async function getServerSideProps(context) {
 }
 
 export default function Pokemon({ pokemon }) {
+  const router = useRouter();
+
   const gifPath =
     pokemon?.["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
       "front_default"
     ] || false;
 
+  if (router.isFallback) return <Loading />;
   return (
     <>
       <Head>
