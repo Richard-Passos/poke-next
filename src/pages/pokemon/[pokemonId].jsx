@@ -8,16 +8,16 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 export const getStaticPaths = async () => {
-  const maxPokemons = 100;
-  const api = "https://pokeapi.co/api/v2/pokemon/";
+  let ids = [];
 
-  const res = await fetch(`${api}/?limit=${maxPokemons}`);
-  const data = await res.json();
+  for (let i = 0; i < 252; i++) {
+    ids.push(i.toString());
+  }
 
   // params
-  const paths = data.results.map((pokemon, index) => {
+  const paths = ids.map((i) => {
     return {
-      params: { pokemonId: (index + 1).toString() },
+      params: { pokemonId: i },
     };
   });
 
