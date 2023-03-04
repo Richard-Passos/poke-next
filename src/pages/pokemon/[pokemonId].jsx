@@ -13,45 +13,44 @@ export const getStaticPaths = async () => {
 
   const res = await fetch(`${api}/?limit=${maxPokemons}`);
   const data = await res.json();
-  
+
   // params
   const paths = data.results.map((pokemon, index) => {
     return {
-      params: { pokemonId: (index + 1).toString() }
-    }
-  })
+      params: { pokemonId: (index + 1).toString() },
+    };
+  });
 
   return {
     paths,
     fallback: true,
-  }
-}
+  };
+};
 
 export const getStaticProps = async (context) => {
-  const { pokemonId } = context.params
+  const { pokemonId } = context.params;
 
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-  const pokemon = await res.json()
+  const pokemon = await res.json();
 
   return {
     props: {
-      pokemon
+      pokemon,
     },
   };
-}
+};
 
 export default function Pokemon({ pokemon }) {
-  const router = useRouter()
+  const router = useRouter();
 
-  console.log(pokemon)
+  console.log(pokemon);
 
   const gifPath =
     pokemon?.["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
       "front_default"
     ] || false;
 
-
-  if(router.isFallback) return <Loading/>
+  if (router.isFallback) return <Loading />;
   return (
     <>
       <Head>
@@ -73,17 +72,21 @@ export default function Pokemon({ pokemon }) {
                 : "https://placehold.co/150x150"
             }
             alt={pokemon.name}
-            width={300}
-            height={300}
+            width={250}
+            height={250}
           />
 
-          <Description>
+          <Description wrap>
             <div className="container">
-              <Title size={2}>Número:</Title>
+              <Title size={2} as="h3">
+                Número:
+              </Title>
               <p className="id">#{pokemon.id}</p>
             </div>
             <div className="container">
-              <Title size={2}>Tipos:</Title>
+              <Title size={2} as="h3">
+                Tipos:
+              </Title>
 
               <Types>
                 {pokemon.types.map(({ type }) => (

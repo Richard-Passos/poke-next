@@ -41,6 +41,10 @@ export default function Home() {
         <title>Home</title>
       </Head>
 
+      <Title size={5} as="h1" className="logo">
+        Pokedex
+      </Title>
+
       <Pokedex pokemonId={pokemonId} setState={setPokemonId}>
         {!pokemon ? (
           <Loading />
@@ -59,21 +63,20 @@ export default function Home() {
 
             <Image
               src={
-                gifPath
-                  ? gifPath
-                  : pokemon.sprites.front_default
-                  ? pokemon.sprites.front_default
-                  : "https://placehold.co/150x150"
+                gifPath ||
+                pokemon.sprites.front_default ||
+                "https://placehold.co/150x150"
               }
               alt={pokemon.name}
               width={100}
               height={100}
+              className="pokemon-img"
             />
 
-            <Description height={6.4} className="description">
+            <Description>
               <p className="id">#{pokemon.id}</p>
 
-              <Title size={3} className="pokemon-name">
+              <Title size={2.8} className="pokemon-name">
                 {pokemon.name}
               </Title>
             </Description>

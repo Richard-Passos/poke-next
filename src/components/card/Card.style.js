@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  width: ${({ width }) => `${width}rem` || auto};
-  height: ${({ height }) => `${height}rem` || auto};
+  ${({ width }) => (width ? `width: ${width}rem;` : "")}
+  ${({ height }) => (height ? `height: ${height}rem;` : "")}
   font-size: 1.6rem;
 
   position: relative;
@@ -12,28 +12,23 @@ export const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-
-  & > img {
-    
-  }
 `;
 
 export const Description = styled.div`
   width: 100%;
-  height: ${({ height }) => `${height}rem` || auto};
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
 
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: ${({ wrap }) => wrap && "wrap"};
   justify-content: space-around;
   align-items: center;
-  gap: 2rem 1rem;
+  gap: 1rem;
 
   .container {
     width: 100%;
-  
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
   }
@@ -59,17 +54,14 @@ export const Types = styled.div`
 
   .type {
     padding: 0.8rem 1.6rem;
-    font-weight: bold;
-    text-align: center;
     border: 0.1rem solid #1b1c1e;
     border-radius: 0.5rem;
     text-shadow: 0 0 0.25rem #000;
     box-shadow: 0 0 0.25rem #000;
+    text-align: center;
     transition: 0.3s;
 
     position: relative;
-
-    flex: 1 1 auto;
 
     :before {
       content: "";
@@ -80,13 +72,15 @@ export const Types = styled.div`
 
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       z-index: -1;
     }
 
     &:hover {
+      color: #1b1c1e;
       text-shadow: 0 0 0 transparent;
       :before {
+        left: 0;
         width: 100%;
       }
     }
@@ -94,7 +88,7 @@ export const Types = styled.div`
 
   .type-normal {
     color: #aa9;
-    border: 0.1rem solid i;
+    border: 0.1rem solid #aa9;
   }
 
   .type-fire {
@@ -182,6 +176,3 @@ export const Types = styled.div`
     border: 0.1rem solid #e9e;
   }
 `;
-
-
-

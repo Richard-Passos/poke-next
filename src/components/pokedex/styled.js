@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   position: relative;
 
-  & > img {
+  .pokedex {
     position: absolute;
     top: -4.8rem;
     left: -57.2rem;
@@ -32,21 +32,19 @@ export const AlingPokedex = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   .special-padding {
     padding: 1.5rem 3rem;
   }
 
-  > * {
-    &:first-child {
-      position: absolute;
-      top: 0.3rem;
-      left: 0.3rem;
-    }
+  .pokedex-terrain {
+    position: absolute;
+    top: 0.35rem;
+    left: 0.35rem;
+  }
 
-    &:not(:first-child) img {
-      margin: 6rem 0 0 1rem;
-    }
+  .pokemon-img {
+    margin: 6rem 0 0 1rem;
   }
 `;
