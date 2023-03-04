@@ -7,10 +7,6 @@ export default function Details({ children, pokemon }) {
     pokemon.moves.sort((a, b) => b.move.name - a.move.name)
   );
 
-  console.log(
-    "🚀 ~ file: Details.jsx:5 ~ Details ~ orderedMoves:",
-    pokemon.moves
-  );
   return (
     <Container>
       {children}

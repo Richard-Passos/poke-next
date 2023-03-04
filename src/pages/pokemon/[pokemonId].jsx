@@ -1,13 +1,12 @@
 import { Image } from "@/components";
-import { Card, Description, Types, Measurements } from "@/components/card";
+import { Card, Description, Types } from "@/components/card";
 import { Details } from "@/components/details";
 import { Loading } from "@/components/loading";
 import { Title } from "@/components/utils/titleStyle";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   let ids = [];
 
   for (let i = 0; i < 252; i++) {
@@ -25,9 +24,9 @@ export const getStaticPaths = async () => {
     paths,
     fallback: true,
   };
-};
+}
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const { pokemonId } = context.params;
 
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
@@ -38,12 +37,10 @@ export const getStaticProps = async (context) => {
       pokemon,
     },
   };
-};
+}
 
 export default function Pokemon({ pokemon }) {
   const router = useRouter();
-
-  console.log(pokemon);
 
   const gifPath =
     pokemon?.["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
@@ -76,7 +73,7 @@ export default function Pokemon({ pokemon }) {
             height={250}
           />
 
-          <Description wrap>
+          <Description wrap={"wrap"}>
             <div className="container">
               <Title size={2} as="h3">
                 Número:

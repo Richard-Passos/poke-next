@@ -19,7 +19,7 @@ export const Description = styled.div`
   padding: 1.5rem 2rem;
 
   display: flex;
-  flex-wrap: ${({ wrap }) => wrap && "wrap"};
+  ${({ wrap }) => (wrap ? `flex-wrap: wrap;` : "")}
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
