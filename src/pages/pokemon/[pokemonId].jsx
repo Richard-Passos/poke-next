@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 export async function getStaticPaths() {
   let ids = [];
 
-  for (let i = 0; i < 252; i++) {
+  for (let i = 1; i < 252; i++) {
     ids.push(i.toString());
   }
 
