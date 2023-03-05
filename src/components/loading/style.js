@@ -1,5 +1,3 @@
-/* Style */
-
 /* Logic */
 import styled, { keyframes } from "styled-components";
 

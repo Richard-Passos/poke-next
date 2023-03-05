@@ -1,3 +1,4 @@
+/* Logic */
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -5,6 +6,7 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: 1rem 0;
   background-color: #2c2d2f;
+  overflow-x: hidden;
 
   display: flex;
   flex-direction: column;

@@ -1,3 +1,3 @@
-import { Card, Description, Types, Measurements } from "./Card.style"
+import { Card, Description, Types } from "./Card.style";
 
-export { Card, Description, Types, Measurements };
+export { Card, Description, Types };

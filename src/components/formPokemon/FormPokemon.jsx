@@ -1,6 +1,6 @@
-import { useState } from "react";
-import ButtonsToggle from "../buttons";
+/* Style */
 import { Container, Form } from "./styled";
+import { ButtonsToggle } from "../buttonsToggle";
 
 const ALLOWED_KEYS = [
   "a",
@@ -41,8 +41,8 @@ const ALLOWED_KEYS = [
   "9",
 ];
 
-async function fetchPokemon(pokemonId, setState) {
-  if(pokemonId) {
+async function fetchPokemonId(pokemonId, setState) {
+  if (pokemonId) {
     const api = "https://pokeapi.co/api/v2/pokemon";
     const res = await fetch(`${api}/${pokemonId.toLowerCase()}`);
     const data = await res.json();
@@ -54,14 +54,14 @@ async function fetchPokemon(pokemonId, setState) {
 function handleSearch(ev, setState) {
   ev.preventDefault();
 
-  const { currentTarget } = ev
+  const { currentTarget } = ev;
   const value = currentTarget.value
     .normalize("NFD")
-    .replace(/[^a-zA-Z0-9s ]/g, "");
+    .replace(/[^a-zA-Z0-9s ]/g, ""); /* Remove special caracters */
 
   currentTarget.value = value;
 
-  fetchPokemon(value, setState);
+  fetchPokemonId(value, setState);
 }
 
 export default function FormPokemon({ setState }) {
@@ -70,7 +70,6 @@ export default function FormPokemon({ setState }) {
       <Form>
         <input
           type="search"
-          name="pokemoId"
           id="pokemoId"
           placeholder="Name or Number"
           onChange={(e) => handleSearch(e, setState)}

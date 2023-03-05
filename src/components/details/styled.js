@@ -1,12 +1,16 @@
+/* Style */
+import { PokemonImage as PokemonImagePokedex } from "../pokedex/styled";
+
+/* Logic */
 import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 99%;
-  padding: 3rem 0;
+  padding: 3rem 1rem;
   background-color: #333;
   color: #000;
-  font-size: 1.5rem;
   border-radius: 2rem;
+  font-size: clamp(0.6rem, 3vw, 1.2rem);
   box-shadow: -1rem 1rem 0.5rem rgba(0, 0, 0, 0.15);
 
   display: flex;
@@ -17,10 +21,10 @@ export const Container = styled.div`
   }
 
   .card {
-    color: #fbfcfe;
-    border-bottom: 0.2rem solid #1b1c1e;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
+    color: #fbfcfe;
+    border-bottom: 0.2rem solid #1b1c1e;
   }
 
   .id {
@@ -30,25 +34,31 @@ export const Container = styled.div`
   .column {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: center;
+    gap: 2rem;
   }
 
   @media screen and (min-width: 600px) {
     flex-direction: row;
 
     .card {
-      border-bottom: none;
-      border-right: 0.2rem solid #1b1c1e;
       padding-bottom: initial;
       margin-bottom: initial;
+      border-bottom: none;
+      border-right: 0.2rem solid #1b1c1e;
     }
   }
 `;
 
+export const PokemonImage = styled(PokemonImagePokedex)`
+  margin: 0;
+`;
+
 export const Stats = styled.div`
   padding: 1rem 2rem;
+  margin-top: 0.5rem;
   text-transform: capitalize;
+  font-size: 1.6rem;
   overflow: auto;
 
   display: flex;
@@ -83,6 +93,8 @@ export const Stats = styled.div`
 export const Moves = styled.div`
   max-height: 20rem;
   padding: 1rem 2rem;
+  margin-top: 0.5rem;
+  font-size: 1.6rem;
   overflow: auto;
 
   display: flex;
@@ -95,8 +107,8 @@ export const Moves = styled.div`
     color: #000;
     border: 0.1rem solid #000;
     border-radius: 1rem;
-    transition: 0.3s;
     text-transform: capitalize;
+    transition: 0.3s;
 
     :hover {
       background-color: #1b1c1e;
@@ -112,7 +124,7 @@ export const Moves = styled.div`
 
   &::-webkit-scrollbar-thumb {
     background-color: #1b1c1e;
+    border: 0.3rem solid #1b1c1e;
     border-radius: 2rem;
-    border: 3px solid #1b1c1e;
   }
 `;

@@ -1,20 +1,23 @@
-import { useState } from "react";
-import { Title } from "../utils/titleStyle";
+/* Style */
 import { Container, Moves, Stats } from "./styled";
+import { Title } from "../utils/titleStyle";
 
 export default function Details({ children, pokemon }) {
-  const [orderedMoves, setOrderedMoves] = useState(
-    pokemon.moves.sort((a, b) => b.move.name - a.move.name)
-  );
+  const orderedMoves = pokemon.moves.sort((a, b) => {
+    let x = a.move.name.toUpperCase();
+    let y = b.move.name.toUpperCase();
+
+    return x === y ? 0 : x > y ? 1 : -1;
+  }); /* Moves in alphabetical order */
 
   return (
     <Container>
-      {children}
+      <div>{children}</div>
 
       <div className="column">
         <div>
           <Title size={2} className="title">
-            Status Base
+            Base Stats
           </Title>
 
           <Stats>
@@ -29,7 +32,7 @@ export default function Details({ children, pokemon }) {
 
         <div>
           <Title size={2} className="title">
-            Movimentos
+            Moves
           </Title>
 
           <Moves>

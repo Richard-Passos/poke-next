@@ -1,30 +1,29 @@
+/* Style */
+import Image from "next/image";
+
+/* Logic */
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 39.3rem;
-  height: 66.4rem;
-  padding: 1rem 0;
+  width: 39.3em;
+  height: 66.4em;
+  padding: 1em 0;
   color: #1b1c1e;
+  font-size: clamp(0.5rem, 2.3vw, 1rem);
   overflow: hidden;
 
   position: relative;
 
-  .pokedex {
-    position: absolute;
-    top: -4.8rem;
-    left: -57.2rem;
-  }
-
   .pokemon-name {
+    text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
   }
 `;
 
 export const AlingPokedex = styled.div`
-  width: 27.6rem;
-  height: 48.92rem;
+  width: 27.6em;
+  height: 48.92em;
 
   position: absolute;
   top: 22.4%;
@@ -35,16 +34,27 @@ export const AlingPokedex = styled.div`
   justify-content: space-between;
 
   .special-padding {
-    padding: 1.5rem 3rem;
+    padding: 1.5em 3em;
   }
+`;
 
-  .pokedex-terrain {
-    position: absolute;
-    top: 0.35rem;
-    left: 0.35rem;
-  }
+export const PokedexImage = styled(Image)`
+  width: ${({ width }) => `${width / 10}em`};
+  height: ${({ height }) => `${height / 10}em`};
 
-  .pokemon-img {
-    margin: 6rem 0 0 1rem;
-  }
+  position: absolute;
+  top: -7.2%;
+  left: -145.5%;
+`;
+
+export const PokedexTerrainImage = styled(PokedexImage)`
+  position: absolute;
+  top: 0.8%;
+  left: 1.2%;
+`;
+
+export const PokemonImage = styled(PokedexImage)`
+  margin: 6em 0 0 1em;
+
+  position: initial;
 `;

@@ -1,8 +1,9 @@
 /* Style */
 import Head from "next/head";
-import { Image, Pokedex } from "@/components";
-import { Loading } from "@/components/loading";
+import { Loading } from "@/components";
+import { Pokedex } from "@/components";
 import { Card, Description, Types } from "@/components/card";
+import { PokemonImage } from "@/components/pokedex/styled";
 import { Title } from "@/components/utils/titleStyle";
 
 /* Logic */
@@ -25,7 +26,7 @@ export default function Home() {
   const gifPath =
     pokemon?.["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
       "front_default"
-    ] || false;
+    ] || undefined;
 
   useEffect(() => {
     setPokemonId(1);
@@ -38,7 +39,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Home - Pokedex</title>
       </Head>
 
       <Title size={5} as="h1" className="logo">
@@ -61,10 +62,10 @@ export default function Home() {
               ))}
             </Types>
 
-            <Image
+            <PokemonImage
               src={
-                gifPath ||
-                pokemon.sprites.front_default ||
+                gifPath ??
+                pokemon.sprites.front_default ??
                 "https://placehold.co/150x150"
               }
               alt={pokemon.name}

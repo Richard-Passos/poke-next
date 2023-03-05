@@ -1,12 +1,12 @@
+/* Logic */
 import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 15rem;
-  margin-left: 0.3rem;
-  padding: 2rem 0;
+  min-height: 15em;
+  padding: 2em 0;
+  margin-left: 0.3em;
   color: #1b1c1e;
-  font-size: 1.6rem;
 
   display: flex;
   flex-direction: column;
@@ -16,11 +16,10 @@ export const Container = styled.div`
 export const Form = styled.form`
   input {
     width: 100%;
-    padding: 1rem 2rem;
-    border: 0.1rem solid #1b1c1e;
-    border-radius: 1rem;
-    font-size: 1.6rem;
-    outline: none;
-    box-shadow: -0.2rem 0.3rem 0 #888, -0.4rem 0.6rem #1b1c1e;
+    padding: 0.625em 1.25em;
+    border: 0.0625em solid #1b1c1e;
+    border-radius: 0.625em;
+    font-size: 1.6em;
+    box-shadow: -0.125em 0.1875em 0 #888, -0.25em 0.375em #1b1c1e;
   }
 `;

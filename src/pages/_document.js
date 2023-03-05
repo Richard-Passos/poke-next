@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from "next/document";
 import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
@@ -26,9 +26,9 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='pt-BR'>
+      <Html lang="pt-BR">
         <Head />
-        <body id='body' className='theme-light'>
+        <body>
           <Main />
           <NextScript />
         </body>

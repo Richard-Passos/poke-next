@@ -1,20 +1,22 @@
-import { Image } from "@/components";
-import { Card, Description, Types } from "@/components/card";
-import { Details } from "@/components/details";
-import { Loading } from "@/components/loading";
-import { Title } from "@/components/utils/titleStyle";
 import Head from "next/head";
+import { Loading } from "@/components/loading";
+import { BtnHome } from "@/components/utils/btnHome";
+import { Details } from "@/components/details";
+import { Card, Description, Types } from "@/components/card";
+import { PokemonImage } from "@/components/details/styled";
+import { Title } from "@/components/utils/titleStyle";
+
+/* Logic */
 import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
-  let ids = [];
-
+  let IDs = [];
   for (let i = 1; i < 252; i++) {
-    ids.push(i.toString());
+    IDs.push(i.toString());
   }
 
   // params
-  const paths = ids.map((i) => {
+  const paths = IDs.map((i) => {
     return {
       params: { pokemonId: i },
     };
@@ -40,49 +42,51 @@ export async function getStaticProps(context) {
 }
 
 export default function Pokemon({ pokemon }) {
-  const router = useRouter();
-
   const gifPath =
     pokemon?.["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
       "front_default"
-    ] || false;
+    ] || undefined;
+
+  const router = useRouter();
 
   if (router.isFallback) return <Loading />;
   return (
     <>
       <Head>
-        <title>Detalhes Pokemon</title>
+        <title>Details - Pokedex</title>
       </Head>
+
+      <BtnHome />
 
       <Details pokemon={pokemon}>
         <Card className="card">
-          <Title className="pokemon-name" size={4}>
+          <Title className="pokemon-name" size={3.5}>
             {pokemon.name}
           </Title>
 
-          <Image
+          <PokemonImage
             src={
-              gifPath
-                ? gifPath
-                : pokemon.sprites.front_default
-                ? pokemon.sprites.front_default
-                : "https://placehold.co/150x150"
+              gifPath ??
+              pokemon.sprites.front_default ??
+              "https://placehold.co/150x150"
             }
             alt={pokemon.name}
-            width={250}
-            height={250}
+            width={200}
+            height={200}
           />
 
           <Description wrap={"wrap"}>
             <div className="container">
               <Title size={2} as="h3">
-                Número:
+                Number:
               </Title>
+
               <p className="id">#{pokemon.id}</p>
             </div>
+
             <div className="container">
               <Title size={2} as="h3">
-                Tipos:
+                Type{pokemon.types.length === 1 || "s"}:
               </Title>
 
               <Types>
@@ -95,6 +99,18 @@ export default function Pokemon({ pokemon }) {
                   </p>
                 ))}
               </Types>
+            </div>
+
+            <div className="container" style={{ fontSize: `1.1em` }}>
+              <Title size={1.2} as="h4">
+                Height:
+              </Title>
+              <p>{pokemon.height / 10} m</p>
+
+              <Title size={1.2} as="h4">
+                weight:
+              </Title>
+              <p>{pokemon.weight / 10} Kg</p>
             </div>
           </Description>
         </Card>

@@ -1,6 +1,6 @@
-import Layout from "./layout";
-import FormPokemon from "./formPokemon";
-import Pokedex from "./pokedex";
-import { Image } from "./Image.style";
+import { Layout } from "./layout";
+import { Pokedex } from "./pokedex";
+import { Details } from "./details";
+import { Loading } from "./loading";
 
-export { Layout, Image, Pokedex, FormPokemon };
+export { Layout, Pokedex, Details, Loading };
